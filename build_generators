@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -o errexit
+
+mkdir -p ./dist
+
+for cmd_dir in cmd/*; do
+  echo "Trying to build $cmd_dir..."
+  go build -o "./dist/${cmd_dir##*/}" "./$cmd_dir"
+done
